@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ComputerAssetsRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use App\Models\Admin;
+use App\Models\ComputerAsset;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -51,9 +53,17 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ComputerAssetsRequest $request, ComputerAsset $computerAsset)
     {
-        //
+        $requests = $request->validated();
+
+        $save = $computerAsset->create($requests);
+
+        if (!$save) {
+            return back()->with('error', "There's something wrong...");
+        }
+
+        return back()->with('success', 'Computer Asset Saved!');
     }
 
     /**

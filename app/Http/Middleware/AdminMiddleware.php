@@ -17,13 +17,13 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         // * FUNCTION CAN'T GO TO THE INDEX PAGE IF THE USER IS NOT YET LOGGED IN
-        if (!session()->has('adminEmail') && ($request->path() !='/'))
+        if (!session()->has('adminEmail') && ($request->path() != '/'))
         {
-            abort(404, 'Unauthorized User');
+            abort(404);
         }
 
         // * FUNCTION CAN'T GO BACK IF THE USER IS ALREADY LOGGED IN
-        if (session()->has('adminEmail') && ($request->path() =='/'))
+        if (session()->has('adminEmail') && ($request->path() == '/'))
         {
             return redirect()->back();
         }

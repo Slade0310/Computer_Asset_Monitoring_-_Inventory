@@ -1,6 +1,6 @@
 @include('partials-front.header')
 
-{{-- ERROR MESSAGE --}}
+{{-- ! ERROR MESSAGE ! --}}
 @if ($errors->any())
     <script>
         const Toast = Swal.mixin({
