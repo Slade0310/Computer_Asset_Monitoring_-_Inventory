@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\AssetCategory;
+use App\Models\ComputerAsset;
 
 class ControllerView extends Controller
 {
@@ -12,12 +13,13 @@ class ControllerView extends Controller
         return view('index');
     }
 
-    public function index(Admin $admin, AssetCategory $assetCategory)
+    public function index(Admin $admin, AssetCategory $assetCategory, ComputerAsset $computerAsset)
     {
         // * CURRENTLY EMAIL SESSION BY ADMIN
         $adminEmail = ['adminEmail' => $admin->where('id', session('adminEmail'))->first()];
         $assetCategories = $assetCategory::orderBy('name')->get();
+        $computerAssets = $computerAsset::get();
 
-        return view('admin.index', $adminEmail, compact('assetCategories'));
+        return view('admin.index', $adminEmail, compact('assetCategories', 'computerAssets'));
     }
 }

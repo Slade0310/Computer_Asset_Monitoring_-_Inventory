@@ -90,136 +90,27 @@
             </div>
         </div>
 
-        <div class="container flex justify-center mx-auto">
-            <div class="flex flex-col">
-                <div class="w-full">
-                    <table class="divide-y divide-gray-300" id="dataTable" width="100%">
-                        <thead class="bg-blue-900 ">
-                            <tr>
-                                <th class="px-6 py-2 text-xs text-white">
-                                    ID
-                                </th>
-                                <th class="px-6 py-2 text-xs text-white">
-                                    Name
-                                </th>
-                                <th class="px-6 py-2 text-xs text-white">
-                                    Email
-                                </th>
-                                <th class="px-6 py-2 text-xs text-white">
-                                    Created_at
-                                </th>
-                                <th class="px-6 py-2 text-xs text-white">
-                                    Edit
-                                </th>
-                                <th class="px-6 py-2 text-xs text-white">
-                                    Delete
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-500">
-                            <tr class="whitespace-nowrap">
-                                <td class="px-6 py-4 text-sm text-center text-gray-500">
-                                    1
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="text-sm text-gray-900">
-                                        Jon doe
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="text-sm text-gray-500">jhondoe@example.com</div>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-center text-gray-500">
-                                    2021-1-12
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <a href="#"
-                                        class="px-4 py-1 text-sm text-blue-600 bg-blue-200 rounded-full">Edit</a>
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <a href="#"
-                                        class="px-4 py-1 text-sm text-red-400 bg-red-200 rounded-full">Delete</a>
-                                </td>
-                            </tr>
-                            <tr class="bg-gray-50 whitespace-nowrap">
-                                <td class="px-6 py-4 text-sm text-center text-gray-500">
-                                    2
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="text-sm text-gray-900">
-                                        Jon doe 2
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="text-sm text-gray-500">jhondoe2@example.com</div>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-center text-gray-500">
-                                    2021-1-12
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <a href="#"
-                                        class="px-4 py-1 text-sm text-blue-600 bg-blue-200 rounded-full">Edit</a>
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <a href="#" class="px-4 py-1 text-sm text-red-400 rounded-full">Delete</a>
-                                </td>
-                            </tr>
-                            <tr class="whitespace-nowrap">
-                                <td class="px-6 py-4 text-sm text-center text-gray-500">
-                                    3
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="text-sm text-gray-900">
-                                        Jon doe 3
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="text-sm text-gray-500">jhondoe3@example.com</div>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-center text-gray-500">
-                                    2021-1-12
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <a href="#"
-                                        class="px-4 py-1 text-sm text-blue-600 bg-blue-200 rounded-full">Edit</a>
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <a href="#"
-                                        class="px-4 py-1 text-sm text-red-400 bg-red-200 rounded-full">Delete</a>
-                                </td>
-                            </tr>
-
-
-                            <tr class="bg-gray-50 whitespace-nowrap">
-                                <td class="px-6 py-4 text-sm text-center text-gray-500">
-                                    4
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="text-sm text-gray-900">
-                                        Jon doe 4
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <div class="text-sm text-gray-500">jhondoe4@example.com</div>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-center text-gray-500">
-                                    2021-1-12
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <a href="#"
-                                        class="px-4 py-1 text-sm text-blue-600 bg-blue-200 rounded-full">Edit</a>
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    <a href="#" class="px-4 py-1 text-sm text-red-400 rounded-full">Delete</a>
-                                </td>
-                            </tr>
-
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+    </div>
+    <div class="px-3 mt-10 lg:px-96">
+        <table class="table px-3 display" id="dataTable" style="width: 100%">
+            <!-- head -->
+            <thead class="text-center bg-blue-900">
+                <tr>
+                    <th>Tag ID</th>
+                    <th>Asset Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- row 1 -->
+                @foreach ($computerAssets as $computerAsset)
+                    <tr>
+                        <th>{{ $computerAsset->tag_id }}</th>
+                        <th>{{ $computerAsset->asset_category_id }}</th>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </main>
 
 <script>
