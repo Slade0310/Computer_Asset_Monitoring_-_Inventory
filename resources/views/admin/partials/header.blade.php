@@ -120,6 +120,14 @@
                             </label>
                             <input type="text" name="tag_id" id="tag_id" placeholder="123XXXXX" class="w-full max-w-xs text-black bg-white input" value="{{ old('tag_id') }}"/>
                             <span class="py-2 text-sm font-medium text-red-400">@error('tag_id') {{ $message }} @enderror</span>
+                            <span>
+                                <div class="flex gap-2 cursor-pointer">
+                                    <span class="font-semibold text-white text-md label-text">
+                                        Set this Active?
+                                    </span>
+                                    <input type="checkbox" name="status" class="toggle toggle-success" value="1" @if(old('status') == 1) checked="checked" @endif />
+                                </div>
+                            </span>
                         </div>
 
                         <div class="w-full max-w-xs form-control">
@@ -136,6 +144,10 @@
                             </select>
                             <span class="py-2 text-sm font-medium text-red-400">@error('asset_category_id') {{ $message }} @enderror</span>
                         </div>
+                    </div>
+
+                    <div class="grid grid-cols-2">
+
                     </div>
 
                     <div class="flex items-center justify-center mt-3">

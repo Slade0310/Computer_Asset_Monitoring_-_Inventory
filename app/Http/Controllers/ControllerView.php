@@ -19,7 +19,9 @@ class ControllerView extends Controller
         $adminEmail = ['adminEmail' => $admin->where('id', session('adminEmail'))->first()];
         $assetCategories = $assetCategory::orderBy('name')->get();
         $computerAssets = $computerAsset::get();
+        $computerAssetsStatusOn = $computerAsset::where('status', 1);
+        $computerAssetsStatusOff = $computerAsset::where('status', null);
 
-        return view('admin.index', $adminEmail, compact('assetCategories', 'computerAssets'));
+        return view('admin.index', $adminEmail, compact('assetCategories', 'computerAssets', 'computerAssetsStatusOn', 'computerAssetsStatusOff'));
     }
 }
