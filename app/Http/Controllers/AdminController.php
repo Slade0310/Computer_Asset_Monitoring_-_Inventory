@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ComputerAssetsRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\UpdateComputerAssetRequest;
 use App\Models\Admin;
 use App\Models\ComputerAsset;
 use Illuminate\Support\Facades\Hash;
@@ -95,9 +96,12 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateComputerAssetRequest $request, ComputerAsset $computerAsset, $id)
     {
-        //
+        $requests = $request->validated();
+        $computerAsset->where('id', $id)->update($requests);
+
+        return redirect()->route('admin-index')->with('success', 'Update Successfully!');
     }
 
     /**

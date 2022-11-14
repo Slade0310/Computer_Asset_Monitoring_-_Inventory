@@ -11,11 +11,12 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     {{-- * JQUERY CDN * --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    {{-- * DATATABLE CDN * --}}
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
-
+    {{-- * LIVEWIRE * --}}
+    @livewireStyles
+    {{-- * VITE CSS * --}}
     @vite('resources/css/app.css')
+    {{-- * POWERGRID * --}}
+    @powerGridStyles
 </head>
 
 <body data-theme="dark">
@@ -125,7 +126,7 @@
                                     <span class="font-semibold text-white text-md label-text">
                                         Set this Active?
                                     </span>
-                                    <input type="checkbox" name="status" class="toggle toggle-success" value="1" @if(old('status') == 1) checked="checked" @endif />
+                                    <input type="checkbox" name="status" class="toggle toggle-success" value="1" @if(old('status') == 1) checked="checked" @endif/>
                                 </div>
                             </span>
                         </div>

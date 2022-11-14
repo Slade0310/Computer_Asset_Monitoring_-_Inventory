@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('tag_id')->unique();
             $table->string('asset_category_id');
-            $table->string('status')->nullable();
+            $table->string('status')->default(0);
             $table->timestamps();
         });
     }

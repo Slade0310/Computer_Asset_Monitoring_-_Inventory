@@ -95,43 +95,12 @@
         </div>
     </div>
 
-    <div class="w-auto mx-10 mt-10 lg:mx-44">
-        <table class="table px-3 row-border hover order-column stripe" id="dataTable" style="width: 100%">
-            <thead>
-                <tr class="text-lg">
-                    <th></th>
-                    <th>Tag ID</th>
-                    <th>Asset Category</th>
-                    <th>Active/Inactive</th>
-                </tr>
-            </thead>
-            <tbody class="bg-warning">
-                @foreach ($computerAssets as $computerAsset)
-                    <tr>
-                        {{-- * FOR AUTO-NUMBERING (INCREMENTAL/DECREMENTAL) * --}}
-                        <th scope="row" class="text-right">{{ $loop->iteration }}.</th>
-                        <th>{{ $computerAsset->tag_id }}</th>
-                        <th>{{ $computerAsset->asset_category_id }}</th>
-                        <th>
-                            @if ($computerAsset->status == 1)
-                                <div class="badge badge-success">Active</div>
-                            @else
-                                <div class="badge badge-error">Inactive</div>
-                            @endif
-                            {{-- <input type="checkbox" name="status" value="" class="toggle-success toggle" {{  ($computerAsset->status == 1 ? ' checked' : '')}}/> --}}
-                        </th>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+    <div class="w-full p-0 mt-2 rounded-lg">
+        <div class="mx-10 mt-4 shadow-lg rounded-xl md:p-12 bg-slate-200">
+            {{-- * TABLE FOR ALL COMPUTER ASSETS * --}}
+            <livewire:computer-asset-table/>
+        </div>
     </div>
 </main>
 
-<script>
-    $(document).ready(function () {
-        $('#dataTable').DataTable( {
-            responsive: true
-        });
-    });
-</script>
 @include('admin.partials.footer')

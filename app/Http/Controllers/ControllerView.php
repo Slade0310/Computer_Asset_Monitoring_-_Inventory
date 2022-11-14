@@ -20,7 +20,7 @@ class ControllerView extends Controller
         $assetCategories = $assetCategory::orderBy('name')->get();
         $computerAssets = $computerAsset::get();
         $computerAssetsStatusOn = $computerAsset::where('status', 1);
-        $computerAssetsStatusOff = $computerAsset::where('status', null);
+        $computerAssetsStatusOff = $computerAsset::where('status', 0);
 
         return view('admin.index', $adminEmail, compact('assetCategories', 'computerAssets', 'computerAssetsStatusOn', 'computerAssetsStatusOff'));
     }
