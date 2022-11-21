@@ -27,7 +27,6 @@ class UpdateComputerAssetRequest extends FormRequest
         return [
             'tag_id' => [Rule::unique('computer_assets', 'tag_id')->ignore($this->id)],
             'asset_category_id' => 'required',
-            // 'status' => 'required'
         ];
     }
 }

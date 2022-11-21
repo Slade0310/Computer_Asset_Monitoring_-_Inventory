@@ -68,8 +68,8 @@
     </script>
 @endif
 
-<main data-theme="light">
-    <div class="grid grid-cols-2 gap-5 pt-16 mx-10 lg:grid-cols-2">
+<main data-theme="light" class="pb-10">
+    <div class="grid grid-cols-1 gap-5 pt-16 mx-10 lg:grid-cols-3">
         <div class="bg-blue-900 card text-primary-content">
             <div class="card-body">
                 <h2 class="text-xl font-semibold text-center">ACTIVE COMPUTER ASSETS</h2>
@@ -93,14 +93,29 @@
                 </div>
             </div>
         </div>
+
+        <div class="bg-blue-900 card text-primary-content">
+            <div class="card-body">
+                <h2 class="text-xl font-semibold text-center">IN ARCHIVE COMPUTER ASSETS</h2>
+                <h2 class="text-2xl font-semibold text-center">
+                    No.: {{ $computerAssetsOnlyTrashed->count() }}
+                </h2>
+                <div class="justify-center pt-3 card-actions">
+                    <button class="font-semibold btn bg-warning hover:bg-yellow-500 hover:duration-300">VIEW</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="w-full p-0 mt-2 rounded-lg">
-        <div class="mx-10 mt-4 shadow-lg rounded-xl md:p-12 bg-slate-200">
+        <div class="mx-10 mt-4 shadow-lg rounded-xl md:p-12 p-5 bg-slate-300">
             {{-- * TABLE FOR ALL COMPUTER ASSETS * --}}
             <livewire:computer-asset-table/>
         </div>
     </div>
 </main>
+
+{{-- * LOADER JS * --}}
+<script src="{{ asset('js/loader.js') }}"></script>
 
 @include('admin.partials.footer')

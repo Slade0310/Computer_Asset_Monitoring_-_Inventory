@@ -29,6 +29,7 @@ final class ComputerAssetTable extends PowerGridComponent
                 ->striped('f9a303')
                 ->type(Exportable::TYPE_XLS,),
             Header::make()
+                ->showToggleColumns()
                 ->showSearchInput(),
             Footer::make()
                 ->showPerPage()
@@ -109,6 +110,7 @@ final class ComputerAssetTable extends PowerGridComponent
      */
     public function columns(): array
     {
+        // * FOR TOGGLE EDIT * //
         $canEdit = true;
         return [
             Column::make('Tag ID', 'tag_id')
@@ -144,21 +146,18 @@ final class ComputerAssetTable extends PowerGridComponent
      * @return array<int, Button>
      */
 
-
     public function actions(): array
     {
-       return [
+        return [
             Button::make('edit', 'Edit')
-               ->class('bg-warning hover:bg-yellow-300 hover:duration-300 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm font-semibold')
-               ->openModal('edit-computer-asset', ['id' => 'id']),
+                ->class('bg-warning hover:bg-yellow-300 hover:duration-300 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm font-semibold')
+                ->openModal('edit-computer-asset', ['id' => 'id']),
 
-            // Button::make('destroy', 'Delete')
-            //    ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-            //    ->route('computer-asset.destroy', ['computer-asset' => 'id'])
-            //    ->method('delete')
+            Button::make('remove', 'Remove')
+                ->class('bg-red-600 hover:bg-red-500 hover:duration-300 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm font-semibold')
+                ->openModal('remove-computer-asset', ['id' => 'id']),
         ];
     }
-
 
     /*
     |--------------------------------------------------------------------------
@@ -173,19 +172,6 @@ final class ComputerAssetTable extends PowerGridComponent
      *
      * @return array<int, RuleActions>
      */
-
-    /*
-    public function actionRules(): array
-    {
-       return [
-
-           //Hide button edit for ID 1
-            Rule::button('edit')
-                ->when(fn($computer-asset) => $computer-asset->id === 1)
-                ->hide(),
-        ];
-    }
-    */
 
     public function actionRules(): array
     {

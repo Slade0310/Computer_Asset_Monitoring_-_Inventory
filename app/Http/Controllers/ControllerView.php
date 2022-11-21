@@ -21,7 +21,8 @@ class ControllerView extends Controller
         $computerAssets = $computerAsset::get();
         $computerAssetsStatusOn = $computerAsset::where('status', 1);
         $computerAssetsStatusOff = $computerAsset::where('status', 0);
+        $computerAssetsOnlyTrashed = $computerAsset::onlyTrashed();
 
-        return view('admin.index', $adminEmail, compact('assetCategories', 'computerAssets', 'computerAssetsStatusOn', 'computerAssetsStatusOff'));
+        return view('admin.index', $adminEmail, compact('assetCategories', 'computerAssets', 'computerAssetsStatusOn', 'computerAssetsStatusOff', 'computerAssetsOnlyTrashed'));
     }
 }

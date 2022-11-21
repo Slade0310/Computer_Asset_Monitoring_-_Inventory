@@ -21,6 +21,9 @@
 
 <body data-theme="dark">
 
+    {{-- * LOADING EFFECT * --}}
+    <div class="loader_bg"></div>
+
     {{-- * NAVBAR * --}}
     <div class="bg-blue-900 navbar">
         <div class="flex-1">
@@ -55,11 +58,11 @@
                         </svg>
                     </a>
                     <ul class="p-1 bg-blue-900 shadow-2xl w-36">
-                        <li class="hover:bg-warning hover:duration-300">
+                        <li class="hover:bg-warning hover:duration-300 rounded-t-md">
                             <a>Settings</a>
                         </li>
                         <hr>
-                        <li class="hover:bg-warning hover:duration-300"">
+                        <li class="hover:bg-warning hover:duration-300">
                             <a href="{{ route('admin-logout') }}">Logout</a>
                         </li>
                     </ul>
@@ -80,7 +83,7 @@
                     <div class="rounded-md indicator hover:bg-warning hover:duration-300" style="z-index: 3">
                         <span class="font-semibold text-white bg-red-600 shadow-2xl badge-outline indicator-item badge">1</span>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
-                            <path fill-rule="evenodd" d="M5.25 9a6.75 6.75 0 0113.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 01-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 11-7.48 0 24.585 24.585 0 01-4.831-1.244.75.75 0 01-.298-1.205A8.217 8.217 0 005.25 9.75V9zm4.502 8.9a2.25 2.25 0 104.496 0 25.057 25.057 0 01-4.496 0z" clip-rule="evenodd" />
+                            <path fill-rule="evenodd" d="M5.25 9a6.75 6.75 0 0113.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 01-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 11-7.48 0 24.585 24.585 0 01-4.831-1.244.75.75 0 01-.298-1.205A8.217 8.217 0 005.25 9.75V9zm4.502 8.9a2.25 2.25 0 104.496 0 25.057 25.057 0 01-4.496 0z" clip-rule="evenodd"/>
                         </svg>
                     </div>
                 </li>
@@ -92,11 +95,11 @@
                             </svg>
                         </a>
                         <ul tabindex="0" class="p-2 mt-32 font-semibold text-center text-white bg-blue-900 rounded-lg shadow-xl menu menu-compact dropdown-content w-28">
-                            <li class="hover:bg-warning hover:duration-300 hover:rounded-lg">
+                            <li class="hover:bg-warning hover:duration-300 rounded-t-md">
                                 <a>Settings</a>
                             </li>
                             <hr>
-                            <li class="hover:bg-warning hover:duration-300 hover:rounded-lg">
+                            <li class="hover:bg-warning hover:duration-300 rounded-b-md">
                                 <a href="{{ route('admin-logout') }}">Logout</a>
                             </li>
                         </ul>
@@ -104,8 +107,9 @@
                 </li>
             </ul>
         </div>
+        {{-- * MODAL * --}}
         {{-- * INPUT FOR ADDING RFID STICKERS * --}}
-        <form action="{{ route('admin-store') }}" method="POST">
+        <form action="{{ route('admin-store') }}" method="POST" class="absolute">
             @csrf
             <input type="checkbox" id="my_modal" class="modal-toggle"/>
             <div class="modal">

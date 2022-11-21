@@ -35,7 +35,7 @@ class AdminController extends Controller
         }
         $request->session()->put('adminEmail', $adminCredential->id);
 
-        return redirect()->route('admin-index');
+        return to_route('admin-index');
     }
 
     public function logout()
@@ -44,7 +44,7 @@ class AdminController extends Controller
         {
             session()->pull('adminEmail');
 
-            return redirect()->route('index-login');
+            return to_route('index-login');
         }
     }
 
@@ -101,7 +101,7 @@ class AdminController extends Controller
         $requests = $request->validated();
         $computerAsset->where('id', $id)->update($requests);
 
-        return redirect()->route('admin-index')->with('success', 'Update Successfully!');
+        return to_route('admin-index')->with('success', 'Update Successfully!');
     }
 
     /**
@@ -110,8 +110,11 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ComputerAsset $computerAsset, $id)
     {
-        //
+        $computerAssetID = $computerAsset->findOrFail($id);
+        $computerAssetID->delete();
+
+        return to_route('admin-index')->with('success', "Move to archive Successfully!");
     }
 }

@@ -70,7 +70,7 @@
     </form>
 </main>
 
-{{-- <script src="sweetalert2.all.min.js"></script> --}}
-
+{{-- * LOADER JS * --}}
+<script src="{{ asset('js/loader.js') }}"></script>
 
 @include('partials-front.footer')

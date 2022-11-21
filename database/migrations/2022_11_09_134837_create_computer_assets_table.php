@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('tag_id')->unique();
             $table->string('asset_category_id');
             $table->string('status')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -29,6 +30,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('computer_assets');
+        Schema::create('computer_assets', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };

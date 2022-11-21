@@ -28,6 +28,7 @@ Route::group(['middleware' => ['isAdmin']], function() {
     Route::get('/a/logout', [AdminController::class, 'logout'])->name('admin-logout');
     Route::post('/a/saved', [AdminController::class, 'store'])->name('admin-store');
     Route::put('/a/update/{id}', [AdminController::class, 'update'])->name('admin-update');
+    Route::post('/a/remove/{id}', [AdminController::class, 'destroy'])->name('admin-remove');
 });
 
 

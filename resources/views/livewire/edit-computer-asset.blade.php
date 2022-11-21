@@ -6,7 +6,7 @@
     </div>
 
     <div class="px-6 pb-6">
-        <form action="{{ url('/a/update/'.$getComputerAssets->id) }}" method="POST" autocomplete="off">
+        <form action="{{ route('admin-update', $getComputerAssets->id) }}" method="POST" autocomplete="off">
             @method('PUT')
             @csrf
             <br>
