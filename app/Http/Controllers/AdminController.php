@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ComputerAssetsRequest;
-use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\UpdateComputerAssetRequest;
 use App\Models\Admin;
@@ -109,12 +108,30 @@ class AdminController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+    */
     public function destroy(ComputerAsset $computerAsset, $id)
     {
         $computerAssetID = $computerAsset->findOrFail($id);
         $computerAssetID->delete();
 
         return to_route('admin-index')->with('success', "Move to archive Successfully!");
+    }
+
+    public function restore(ComputerAsset $computerAsset, $id)
+    {
+        // * FIND THE ID FIRST AND THEN RESTORE SINCE IT HASN'T DELETED PERMANENTLY BY USING SOFT DELETE * //
+        $computerAssetDetails = $computerAsset->onlyTrashed()->findorFail($id);
+        $computerAssetDetails->restore();
+
+        return to_route('admin-archive')->with('success', "Successfully Restored!");
+    }
+
+    public function forceDelete(ComputerAsset $computerAsset, $id)
+    {
+        // NOW THIS WILL DELETE PERMANENTLY BY USING FORCE DELETE
+        $computerAssetDetails = $computerAsset->onlyTrashed()->findorFail($id);
+        $computerAssetDetails->forceDelete();
+
+        return to_route('admin-archive')->with('success', "Force Delete Successfully!");
     }
 }

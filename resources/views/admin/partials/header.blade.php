@@ -28,7 +28,7 @@
     <div class="bg-blue-900 navbar">
         <div class="flex-1">
             <img src="{{ asset('img/logo.png') }}" class="md:h-16 h-11" alt="SPCC_CIT_LOGO">
-            <a href="#" class="p-3 font-semibold text-white md:text-2xl hover:cursor-pointer text-md">
+            <a href="{{ route('admin-index') }}" class="p-3 font-semibold text-white md:text-2xl hover:cursor-pointer text-md">
                 Computer Assets Inventory & Monitoring
             </a>
         </div>

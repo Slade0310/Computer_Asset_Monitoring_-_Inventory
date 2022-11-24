@@ -25,4 +25,13 @@ class ControllerView extends Controller
 
         return view('admin.index', $adminEmail, compact('assetCategories', 'computerAssets', 'computerAssetsStatusOn', 'computerAssetsStatusOff', 'computerAssetsOnlyTrashed'));
     }
+
+    public function archiveView(Admin $admin, AssetCategory $assetCategory)
+    {
+        // * CURRENTLY EMAIL SESSION BY ADMIN
+        $adminEmail = ['adminEmail' => $admin->where('id', session('adminEmail'))->first()];
+        $assetCategories = $assetCategory::orderBy('name')->get();
+
+        return view('admin.archive', $adminEmail, compact('assetCategories'));
+    }
 }

@@ -101,14 +101,14 @@
                     No.: {{ $computerAssetsOnlyTrashed->count() }}
                 </h2>
                 <div class="justify-center pt-3 card-actions">
-                    <button class="font-semibold btn bg-warning hover:bg-yellow-500 hover:duration-300">VIEW</button>
+                    <a href="{{ route('admin-archive') }}" class="font-semibold btn bg-warning hover:bg-yellow-500 hover:duration-300">VIEW</a>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="w-full p-0 mt-2 rounded-lg">
-        <div class="mx-10 mt-4 shadow-lg rounded-xl md:p-12 p-5 bg-slate-300">
+        <div class="p-5 mx-10 mt-4 shadow-lg rounded-xl md:p-12 bg-slate-300">
             {{-- * TABLE FOR ALL COMPUTER ASSETS * --}}
             <livewire:computer-asset-table/>
         </div>
