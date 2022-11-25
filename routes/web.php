@@ -29,11 +29,9 @@ Route::group(['middleware' => ['isAdmin']], function() {
     Route::post('/a/saved', [AdminController::class, 'store'])->name('admin-store');
     Route::put('/a/update/{id}', [AdminController::class, 'update'])->name('admin-update');
     Route::post('/a/remove/{id}', [AdminController::class, 'destroy'])->name('admin-remove');
+    Route::get('/a/active', [ControllerView::class, 'activeView'])->name('admin-active');
+    Route::get('/a/inactive', [ControllerView::class, 'inactiveView'])->name('admin-inactive');
     Route::get('/a/archive', [ControllerView::class, 'archiveView'])->name('admin-archive');
     Route::post('/a/restore/{id}', [AdminController::class, 'restore'])->name('admin-restore');
     Route::post('/a/force_delete/{id}', [AdminController::class, 'forceDelete'])->name('admin-forceDelete');
-
 });
-
-
-

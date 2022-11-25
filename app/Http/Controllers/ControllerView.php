@@ -34,4 +34,22 @@ class ControllerView extends Controller
 
         return view('admin.archive', $adminEmail, compact('assetCategories'));
     }
+
+    public function activeView(Admin $admin, AssetCategory $assetCategory)
+    {
+        // * CURRENTLY EMAIL SESSION BY ADMIN
+        $adminEmail = ['adminEmail' => $admin->where('id', session('adminEmail'))->first()];
+        $assetCategories = $assetCategory::orderBy('name')->get();
+
+        return view('admin.active', $adminEmail, compact('assetCategories'));
+    }
+
+    public function inactiveView(Admin $admin, AssetCategory $assetCategory)
+    {
+        // * CURRENTLY EMAIL SESSION BY ADMIN
+        $adminEmail = ['adminEmail' => $admin->where('id', session('adminEmail'))->first()];
+        $assetCategories = $assetCategory::orderBy('name')->get();
+
+        return view('admin.inactive', $adminEmail, compact('assetCategories'));
+    }
 }

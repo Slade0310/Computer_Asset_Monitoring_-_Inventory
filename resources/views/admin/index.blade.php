@@ -77,7 +77,7 @@
                     No.: {{ $computerAssetsStatusOn->count() }}
                 </h2>
                 <div class="justify-center pt-3 card-actions">
-                    <button class="font-semibold btn bg-warning hover:bg-yellow-500 hover:duration-300">VIEW</button>
+                    <a href="{{ route('admin-active') }}" class="font-semibold btn bg-warning hover:bg-yellow-500 hover:duration-300">VIEW</a>
                 </div>
             </div>
         </div>
@@ -89,7 +89,7 @@
                     No.: {{ $computerAssetsStatusOff->count() }}
                 </h2>
                 <div class="justify-center pt-3 card-actions">
-                    <button class="font-semibold btn bg-warning hover:bg-yellow-500 hover:duration-300">VIEW</button>
+                    <a href="{{ route('admin-inactive') }}" class="font-semibold btn bg-warning hover:bg-yellow-500 hover:duration-300">VIEW</a>
                 </div>
             </div>
         </div>

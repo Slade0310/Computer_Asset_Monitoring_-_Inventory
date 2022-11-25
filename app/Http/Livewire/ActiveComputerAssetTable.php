@@ -9,7 +9,7 @@ use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
 
-final class ComputerAssetTable extends PowerGridComponent
+final class ActiveComputerAssetTable extends PowerGridComponent
 {
     use ActionButton;
 
@@ -25,9 +25,9 @@ final class ComputerAssetTable extends PowerGridComponent
         $this->showCheckBox();
 
         return [
-            Exportable::make('COMPUTER_ASSETS')
-                ->striped('f9a303')
-                ->type(Exportable::TYPE_XLS),
+            Exportable::make('ACTIVE_COMPUTER_ASSET')
+            ->striped('f9a303')
+            ->type(Exportable::TYPE_XLS),
             Header::make()
                 ->showToggleColumns()
                 ->showSearchInput(),
@@ -52,7 +52,7 @@ final class ComputerAssetTable extends PowerGridComponent
     */
     public function datasource(): Builder
     {
-        return ComputerAsset::query();
+        return ComputerAsset::query()->where('status', 1);
     }
 
     /*
@@ -110,8 +110,6 @@ final class ComputerAssetTable extends PowerGridComponent
      */
     public function columns(): array
     {
-        // * FOR TOGGLE EDIT * //
-        $canEdit = true;
         return [
             Column::make('Tag ID', 'tag_id')
                 ->searchable()
@@ -122,12 +120,6 @@ final class ComputerAssetTable extends PowerGridComponent
                 ->searchable()
                 ->headerAttribute('text-center text-lg')
                 ->bodyAttribute('text-center font-bold text-lg')
-                ->sortable(),
-            Column::make('Active/Inactive', 'status')
-                ->searchable()
-                ->headerAttribute('text-center text-lg')
-                ->bodyAttribute('text-center font-bold text-lg')
-                ->toggleable($canEdit, '1', '0')
                 ->sortable(),
         ];
     }
@@ -145,19 +137,6 @@ final class ComputerAssetTable extends PowerGridComponent
      *
      * @return array<int, Button>
      */
-
-    public function actions(): array
-    {
-        return [
-            Button::make('edit', 'Edit')
-                ->class('bg-warning hover:bg-yellow-300 hover:duration-300 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm font-semibold')
-                ->openModal('edit-computer-asset', ['id' => 'id']),
-
-            Button::make('remove', 'Remove')
-                ->class('bg-red-600 hover:bg-red-500 hover:duration-300 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm font-semibold')
-                ->openModal('remove-computer-asset', ['id' => 'id']),
-        ];
-    }
 
     /*
     |--------------------------------------------------------------------------
@@ -181,12 +160,5 @@ final class ComputerAssetTable extends PowerGridComponent
                     return $statusActive->status == 0;
                 })->setAttribute('class', 'bg-red-400 text-white hover:text-black')
         ];
-    }
-
-    public function onUpdatedToggleable($id, $field, $value): void
-    {
-        ComputerAsset::query()->find($id)->update([
-            $field => $value,
-        ]);
     }
 }

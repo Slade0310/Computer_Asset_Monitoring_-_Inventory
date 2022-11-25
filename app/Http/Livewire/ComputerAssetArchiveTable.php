@@ -27,7 +27,7 @@ final class ComputerAssetArchiveTable extends PowerGridComponent
         return [
             Exportable::make('ARCHIVE_COMPUTER_ASSET')
             ->striped('f9a303')
-            ->type(Exportable::TYPE_XLS,),
+            ->type(Exportable::TYPE_XLS),
             Header::make()
                 ->showToggleColumns()
                 ->showSearchInput(),
