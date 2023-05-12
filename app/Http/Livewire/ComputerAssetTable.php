@@ -89,6 +89,7 @@ final class ComputerAssetTable extends PowerGridComponent
         return PowerGrid::eloquent()
             ->addColumn('tag_id')
             ->addColumn('asset_category_id')
+            ->addColumn('computer_designation_id')
             ->addColumn('status')
             ->addColumn('created_at_formatted', fn (ComputerAsset $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
             ->addColumn('updated_at_formatted', fn (ComputerAsset $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
@@ -123,7 +124,18 @@ final class ComputerAssetTable extends PowerGridComponent
                 ->headerAttribute('text-center text-lg')
                 ->bodyAttribute('text-center font-bold text-lg')
                 ->sortable(),
-            Column::make('Active/Inactive', 'status')
+            Column::make('Computer Designated', 'computer_designation_id')
+                ->searchable()
+                ->headerAttribute('text-center text-lg')
+                ->bodyAttribute('text-center font-bold text-lg')
+                ->sortable(),
+            Column::make('Active/Inactive', 'active_status')
+                ->searchable()
+                ->headerAttribute('text-center text-lg')
+                ->bodyAttribute('text-center font-bold text-lg')
+                ->toggleable($canEdit, '1', '0')
+                ->sortable(),
+            Column::make('Designation Status', 'designation_status')
                 ->searchable()
                 ->headerAttribute('text-center text-lg')
                 ->bodyAttribute('text-center font-bold text-lg')
@@ -178,8 +190,13 @@ final class ComputerAssetTable extends PowerGridComponent
        return [
             Rule::rows()
                 ->when(function($statusActive) {
-                    return $statusActive->status == 0;
-                })->setAttribute('class', 'bg-red-400 text-white hover:text-black')
+                    return $statusActive->active_status == 0;
+                })->setAttribute('class', 'bg-red-400 text-white hover:text-black'),
+
+            Rule::rows()
+                ->when(function($designationStatus) {
+                    return $designationStatus->designation_status == 1;
+                })->setAttribute('class', 'bg-green-500 text-white hover:text-black')
         ];
     }
 

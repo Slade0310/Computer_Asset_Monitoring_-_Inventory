@@ -26,7 +26,9 @@ class ComputerAssetsRequest extends FormRequest
         return [
             'tag_id' => 'required|unique:computer_assets,tag_id',
             'asset_category_id' => 'required',
-            'status' => 'nullable'
+            'computer_designation_id' => 'required',
+            'active_status' => 'nullable',
+            'designation_status' => 'nullable'
         ];
     }
 }

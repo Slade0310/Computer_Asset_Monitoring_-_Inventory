@@ -69,7 +69,7 @@
 @endif
 
 <main data-theme="light" class="pb-10">
-    <div class="grid grid-cols-1 gap-5 pt-16 mx-10 lg:grid-cols-3">
+    <div class="grid grid-cols-1 gap-5 pt-10 mx-10 lg:grid-cols-3">
         <div class="bg-blue-900 card text-primary-content">
             <div class="card-body">
                 <h2 class="text-xl font-semibold text-center">ACTIVE COMPUTER ASSETS</h2>

@@ -52,7 +52,7 @@ final class InactiveComputerAssetTable extends PowerGridComponent
     */
     public function datasource(): Builder
     {
-        return ComputerAsset::query()->where('status', 0);
+        return ComputerAsset::query()->where('active_status', 0);
     }
 
     /*
@@ -89,7 +89,8 @@ final class InactiveComputerAssetTable extends PowerGridComponent
         return PowerGrid::eloquent()
             ->addColumn('tag_id')
             ->addColumn('asset_category_id')
-            ->addColumn('status')
+            ->addColumn('computer_designation_id')
+            ->addColumn('active_status')
             ->addColumn('created_at_formatted', fn (ComputerAsset $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
             ->addColumn('updated_at_formatted', fn (ComputerAsset $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
     }
@@ -117,6 +118,11 @@ final class InactiveComputerAssetTable extends PowerGridComponent
                 ->bodyAttribute('text-center font-bold text-lg')
                 ->sortable(),
             Column::make('Asset Category', 'asset_category_id')
+                ->searchable()
+                ->headerAttribute('text-center text-lg')
+                ->bodyAttribute('text-center font-bold text-lg')
+                ->sortable(),
+            Column::make('Computer Designated', 'computer_designation_id')
                 ->searchable()
                 ->headerAttribute('text-center text-lg')
                 ->bodyAttribute('text-center font-bold text-lg')
@@ -157,7 +163,7 @@ final class InactiveComputerAssetTable extends PowerGridComponent
        return [
             Rule::rows()
                 ->when(function($statusActive) {
-                    return $statusActive->status == 0;
+                    return $statusActive->active_status == 0;
                 })->setAttribute('class', 'bg-red-400 text-white hover:text-black')
         ];
     }

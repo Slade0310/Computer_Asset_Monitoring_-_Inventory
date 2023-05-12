@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('computer_assets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('tag_id')->unique();
+            $table->string('computer_designation_id');
             $table->string('asset_category_id');
-            $table->string('status')->default(0);
+            $table->string('active_status')->default(0);
+            $table->string('designation_status')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

@@ -25,6 +25,7 @@ Route::post('/a/check', [AdminController::class, 'check'])->name('admin-check');
 // * ROUTE FOR ADMIN * //
 Route::group(['middleware' => ['isAdmin']], function() {
     Route::get('/a', [ControllerView::class, 'index'])->name('admin-index');
+    Route::get('/a/asset-monitoring', [ControllerView::class, 'assetMonitoring'])->name('admin-assetMonitoring');
     Route::get('/a/logout', [AdminController::class, 'logout'])->name('admin-logout');
     Route::post('/a/saved', [AdminController::class, 'store'])->name('admin-store');
     Route::put('/a/update/{id}', [AdminController::class, 'update'])->name('admin-update');
